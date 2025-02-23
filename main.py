@@ -6,7 +6,7 @@ from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, CallbackContext, CallbackQueryHandler
 
 # Set your bot token here
-BOT_TOKEN = 7883225193:AAHk1Ov00r8YOj4aHR6lilhlnymLn-RzYjs
+BOT_TOKEN = "7883225193:AAHk1Ov00r8YOj4aHR6lilhlnymLn-RzYjs"
 
 # Define storage file
 data_file = "work_records.xlsx"
