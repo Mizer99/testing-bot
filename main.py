@@ -3,10 +3,10 @@ import pandas as pd
 import os
 from datetime import datetime
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import Updater, CommandHandler, CallbackContext, CallbackQueryHandler
+from telegram.ext import Application, CommandHandler, CallbackContext, CallbackQueryHandler
 
 # Set your bot token here
-BOT_TOKEN = "7883225193:AAHk1Ov00r8YOj4aHR6lilhlnymLn-RzYjs"
+BOT_TOKEN = "YOUR_BOT_TOKEN_HERE"
 
 # Define storage file
 data_file = "work_records.xlsx"
@@ -86,15 +86,13 @@ def send_daily_report(update: Update, context: CallbackContext):
         update.message.reply_text("No records found!")
 
 def main():
-    updater = Updater(BOT_TOKEN, use_context=True)
-    dp = updater.dispatcher
+    application = Application.builder().token(BOT_TOKEN).build()
     
-    dp.add_handler(CommandHandler("start", start))
-    dp.add_handler(CallbackQueryHandler(button_handler))
-    dp.add_handler(CommandHandler("daily_record", send_daily_report))
+    application.add_handler(CommandHandler("start", start))
+    application.add_handler(CallbackQueryHandler(button_handler))
+    application.add_handler(CommandHandler("daily_record", send_daily_report))
     
-    updater.start_polling()
-    updater.idle()
+    application.run_polling()
 
 if __name__ == "__main__":
     main()
